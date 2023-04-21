@@ -7,10 +7,9 @@ const feedbackForm = document.querySelector('.feedback-form');
 feedbackForm.addEventListener('input', throttle(handleInput, 500));
 feedbackForm.addEventListener('submit', handleSubmit);
 
-populateFeedbackForm();
+populateFeedbackForm(JSON.parse(localStorage.getItem(STORAGE_KEY)));
 
-function populateFeedbackForm() {
-  const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
+function populateFeedbackForm(data) {
   if (data) {
     feedbackForm.email.value = data.email;
     feedbackForm.message.value = data.message;
